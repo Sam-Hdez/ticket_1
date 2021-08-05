@@ -10,6 +10,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 app.use(cors());
 
+const userRoutes = require('./routes/user.routes');
+
+app.use('/user', userRoutes);
+
 async function server() {
     try {
         await sequelize.authenticate();
