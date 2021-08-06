@@ -1,3 +1,7 @@
 .section-hidden {
     display: none;
 }
+
+.budget-button-text {
+    font-size: medium;
+}

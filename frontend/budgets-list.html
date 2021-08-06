@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - System Budgets</title>
+    <title>Budgets - System Budgets</title>
     <link rel="stylesheet" href="./assets/bts.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/nav.css">
     <link rel="stylesheet" href="./assets/fontawesome.5/css/all.min.css">
@@ -44,78 +44,196 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 bg-light border">
-                <div class="row bg-light border text-start">
+                <div class="row bg-light text-start p-2">
                     <div class="col-xs-12 col-sm-12 col-md-4">
-                        <button type="button" class="btn btn-outline-success" onclick="newBudget('resumenFinanciero')"> Nuevo Proyecto </button>
+                        <button id="newBudgetButton" type="button" class="btn btn-success" onclick="newBudget('resumenFinanciero')"> Nuevo Proyecto </button>
                     </div>
                 </div>
-                <div id="crearProyecto" class="row bg-light border text-start section-hidden">
+                <div id="submenusEditProject" class="row bg-light text-start section-hidden p-2">
+                    <div class="row">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('resumenFinanciero')">Resumen Financiero</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('flujoEfectivo')">Flujos de Efectivo</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('estadoResultados')">Estado de Resultados</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('ingresos')">Ingresos</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('costosDirectos')">Costos Directos</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('gastosAdministrativos')">Gastos Administrativos</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('recursos')">Recursos</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('costos')">Costos</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link" onclick="editBudgetShowMenu('resumenCostosRecursos')">Resumen Costos Recursos</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="crearProyecto" class="row bg-light text-start section-hidden p-2">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <h3>Nuevo Proyecto</h3>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">Nombre del proyecto</label>
+                            <label for="budgetName" class="form-label">Nombre del nuevo proyecto</label>
+                            <input type="text" name="budgetName" id="budgetName" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div id="resumenFinanciero" class="row bg-light border text-start section-hidden">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="row p-3">
                             <h3>Resumen Financiero</h3>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">Ventas</label>
+                        <div class="row p-3">
+                            <div class="col-xs-12 xol-sm-12 col-md-4 p-2">
+                                <label for="">Ventas</label>
+                                <input type="number" name="" id="" class="form-control">
+                            </div>
+                            <div class="col-xs-12 xol-sm-12 col-md-4 p-2">
+                                <label for="">Costos</label>
+                                <input type="number" name="" id="" class="form-control">
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                                <label for="">Margen</label>
+                                <input type="number" name="" id="" class="form-control">
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                                <label for="">Porcentaje %</label>
+                                <input type="number" name="" id="" class="form-control">
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">Costos</label>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">Margen</label>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="">Porcentaje %</label>
+                        <div class="row p-3">
+                            <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                                <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null,'resumenFinanciero','flujoEfectivo')">Avanzar a Flujo de Efectivo</button>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                                <button type="button" class="btn btn-outline-success budget-button-text"> Guardar </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="flujosEfectivo" class="row bg-light border text-start section-hidden">
+                <div id="flujoEfectivo" class="row bg-light border text-start section-hidden">
                     <div class="row">
-                        <h3>Flujos de Efectivo</h3>
+                        <h3>Flujo de Efectivo</h3>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null, 'flujoEfectivo','resumenFinanciero')">Regresar a <br> Resumen Financiero</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo('resumenFinanciero','flujoEfectivo','estadoResultados')"> Guardar y Avanzar a Estado de Resultados</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text"> Guardar </button>
+                        </div>
                     </div>
                 </div>
                 <div id="estadoResultados" class="row bg-light border text-start section-hidden">
                     <div class="row">
                         <h3>Estado de Resultados</h3>
                     </div>
+                    <div class="row p-3">
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null, 'estadoResultados','flujoEfectivo')">Regresar a Flujo de Efectivo</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo('flujoEfectivo','estadoResultados','ingresos')"> Guardar y Avanzar a Ingresos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text"> Guardar </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="ingresos" class="row bg-light border text-start section-hidden">
                     <div class="row">
                         <h3>Ingresos</h3>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null, 'ingresos','estadoResultados')">Regresar a Estado de Resultados</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo('estadoResultados','ingresos','costosDirectos')"> Guardar y Avanzar a Costos Directos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text"> Guardar </button>
+                        </div>
                     </div>
                 </div>
                 <div id="costosDirectos" class="row bg-light border text-start section-hidden">
                     <div class="row">
                         <h3>Costos Directos</h3>
                     </div>
+                    <div class="row p-3">
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null, 'costosDirectos','ingresos')">Regresar a <br> Ingresos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo('ingresos','costosDirectos','gastosAdministrativos')"> Guardar y Avanzar a Gastos Administrativos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text"> Guardar </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="gastosAdministrativos" class="row bg-light border text-start section-hidden">
                     <div class="row">
                         <h3>Gastos Administrativos</h3>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null, 'gastosAdministrativos','costosDirectos')">Regresar a Costos Directos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo('costosDirectos','gastosAdministrativos','recursos')"> Guardar y Avanzar a Recursos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text"> Guardar </button>
+                        </div>
                     </div>
                 </div>
                 <div id="recursos" class="row bg-light border text-start section-hidden">
                     <div class="row">
                         <h3>Recursos</h3>
                     </div>
+                    <div class="row p-3">
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null, 'recursos','gastosAdministrativos')">Regresar a Gastos Administrativos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo('gastosAdministrativos','recursos','costos')"> Guardar y Avanzar a <br> Costos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text"> Guardar </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="costos" class="row bg-light border text-start section-hidden">
                     <div class="row">
                         <h3>Costos</h3>
                     </div>
+                    <div class="row p-3">
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null, 'costos','recursos')">Regresar a <br> Recursos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo('recursos','costos','resumenCostosRecursos')"> Guardar y Avanzar a Resumen Costos Recursos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text"> Guardar </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="resumenCostosRecursos" class="row bg-light border text-start section-hidden">
                     <div class="row">
                         <h3>Resumen Costos Recursos</h3>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null, 'resumenCostosRecursos','costos')">Regresar a <br> Costos</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text" onclick="advanceTo(null,'resumenCostosRecursos','resumenFinanciero')"> Guardar y revisar Resumen Financiero</button>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 p-2">
+                            <button type="button" class="btn btn-outline-success budget-button-text"> Finalizar </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const { sequelize } = require('./db/conexion');
+const { models } = require('./db/createModels');
 
 require('dotenv').config();
 const cors = require('cors');
@@ -22,6 +23,9 @@ async function server() {
         app.listen(process.env.PORT, function() {
             console.log(`Sistema iniciado en http://${process.env.HOST}:${process.env.PORT}`);
         });
+
+        await models();
+
     } catch (error) {
         console.error('No se pudo conectar correctamebte con la Base de datos:', error);
     }
