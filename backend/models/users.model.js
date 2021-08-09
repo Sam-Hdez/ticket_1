@@ -93,7 +93,6 @@ class User {
             let user_status = await Users.update({
                 first_name: data.first_name,
                 last_name: data.last_name,
-                encrypted_password: data.encrypted_password,
                 is_admin: data.is_admin,
             }, {
                 where: {
@@ -120,6 +119,15 @@ class User {
         } catch (error) {
             throw new Error('Error en la función DeleteUser: ' + error.message);
         }
+    }
+}
+
+async function ListAllUsers() {
+    try {
+        let listUser = await Users.findAll({ where: { active: 1 } });
+        return listUser;
+    } catch (error) {
+        throw new Error('Error en la función ListAllUsers: ' + error.message);
     }
 }
 
@@ -212,6 +220,21 @@ const checkUser = async(user) => {
     }
 }
 
+async function changePassword(email_user, newpassword) {
+    try {
+        let user_status = await Users.update({
+            encrypted_password: await bcrypt.hashSync(newpassword + email_user, saltRounds)
+        }, {
+            where: {
+                email: email_user
+            }
+        });
+        return user_status;
+    } catch (error) {
+        throw new Error('Error en la función ListAllUsers: ' + error.message);
+    }
+}
+
 module.exports = {
     User,
     CreateTableUsers,
@@ -220,5 +243,7 @@ module.exports = {
     getUser,
     checkUser,
     ValidateUser,
-    isAdmin
+    isAdmin,
+    ListAllUsers,
+    changePassword
 }

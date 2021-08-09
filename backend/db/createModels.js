@@ -1,7 +1,7 @@
-const { CreateTableAndUser } = require('../controllers/user.controller');
+const { CreateTables } = require('../controllers/createtables.controller');
 
 async function models() {
-    CreateTableAndUser();
+    CreateTables();
 }
 
 module.exports = {
