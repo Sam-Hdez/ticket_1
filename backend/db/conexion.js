@@ -20,4 +20,5 @@ const sequelize = new Sequelize(process.env.DB_NAME, null, null, {
 module.exports = {
     sequelize,
     DataTypes,
+    Op,
 }

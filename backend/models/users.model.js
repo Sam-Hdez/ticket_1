@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../db/conexion');
+const { sequelize, DataTypes, Op } = require('../db/conexion');
 const bcrypt = require('bcrypt'); //bcrypt para hashear contraseña
 const saltRounds = 10; //rondas salt entre más hay más seguridad pero tarda más la respuesta
 

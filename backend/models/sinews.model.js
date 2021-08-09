@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../db/conexion');
+const { sequelize, DataTypes, Op } = require('../db/conexion');
 
 const Sinews = sequelize.define('Sinews', {
     sinews_id: {
