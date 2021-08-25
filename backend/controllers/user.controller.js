@@ -1,6 +1,8 @@
-const { User, readUser, checkUser, getUser, ListAllUsers, changePassword } = require('../models/users.model');
+const { User, readUser, checkUser, getUser, ListAllUsers, changePassword } = require('../services/users.service');
 const bcrypt = require('bcrypt'); //bcrypt para hashear contraseña
 const { generarToken, descubrirToken } = require('../services/jwt.service');
+
+/* Implementar los controller como clases */
 
 async function loginController(req, res) {
     try {
