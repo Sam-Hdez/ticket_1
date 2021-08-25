@@ -38,10 +38,6 @@ const Sinews = sequelize.define('Sinews', {
     createdAt: 'created_at'
 });
 
-async function CreateTableSinews() {
-    await Sinews.sync();
-}
-
 module.exports = {
-    CreateTableSinews,
+    Sinews
 }

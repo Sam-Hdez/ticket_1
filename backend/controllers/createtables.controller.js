@@ -1,9 +1,9 @@
-const { CreateTableUsers, LoadingOneAdmin } = require('../models/users.model');
-const { CreateTableProjects } = require('../models/projects.model');
-const { CreateTableMonths } = require('../models/months.model');
-const { CreateTableIncomes } = require('../models/incomes.model');
-const { CreateTableDirectcosts_Expenses } = require('../models/directcosts_expenses.model');
-const { CreateTableSinews } = require('../models/sinews.model');
+const { CreateTableUsers, LoadingOneAdmin } = require('../services/users.service');
+const { CreateTableProjects } = require('../services/projects.service');
+const { CreateTableMonths } = require('../services/months.service');
+const { CreateTableIncomes } = require('../services/incomes.service');
+const { CreateTableDirectcosts_Expenses } = require('../services/directcosts_expenses.service');
+const { CreateTableSinews } = require('../services/sinews.service');
 
 async function CreateTables() {
     CreateTableUsers();

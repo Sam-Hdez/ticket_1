@@ -1,4 +1,4 @@
-const { isAdmin } = require('../models/users.model');
+const { isAdmin } = require('../services/users.service');
 const { descubrirToken } = require('../services/jwt.service');
 const Joi = require('joi');
 const { loginDTO } = require('../dto/users/login.dto');
