@@ -23,8 +23,22 @@ const descubrirToken = async(token) => {
     }
 }
 
+const obtenerIdUsser = async(token) => {
+    try {
+        const resultado = jwt.verify(token, process.env.JWT_SEED);
+        if (resultado) {
+            return resultado.data.user_id;
+        } else {
+            throw new Error('Token no válido');
+        }
+    } catch (error) {
+        throw new Error('Error al verificar Token: ' + error.message)
+    }
+}
+
 module.exports = {
     generarToken,
     descubrirToken,
     jwt,
+    obtenerIdUsser
 };
