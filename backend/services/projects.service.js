@@ -24,12 +24,11 @@ class Project {
         }
     }
 
-    async updateProject(id, data) {
+    async updateProject(id) {
         try {
             let project_status = await Projects.update({
-                project_name: data.project_name,
-                project_version: data.project_version,
-                user_id: data.user_id
+                project_name: this.project_name,
+                project_version: this.project_version
             }, {
                 where: {
                     project_id: id
@@ -59,7 +58,7 @@ class Project {
 
 async function ListAllProjects(user) {
     try {
-        let listProject = await Projects.findAll({ where: { user_id: user, active: 1 } });
+        let listProject = await Projects.findAll({ where: { user_id: user, active: 1 }, attributes: ['project_id', 'project_name', 'project_version'] });
         return listProject;
     } catch (error) {
         throw new Error('Error en la función ListAllProjects: ' + error.message);
@@ -68,7 +67,7 @@ async function ListAllProjects(user) {
 
 async function getProject(id) {
     try {
-        let projectResultado = await Users.findOne({ where: { user_id: id } });
+        let projectResultado = await Projects.findOne({ where: { project_id: id } });
         if (projectResultado) {
             let project = {
                 project_id: projectResultado.project_id,
@@ -86,9 +85,21 @@ async function getProject(id) {
     }
 }
 
+async function searchProject(name) {
+    try {
+        let projectResultado = await Projects.findOne({ where: { project_name: name } });
+        if (projectResultado) {
+            throw new Error('El nombre del proyecto ya existe');
+        }
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
 module.exports = {
     Project,
     CreateTableProjects,
     ListAllProjects,
     getProject,
+    searchProject
 }
