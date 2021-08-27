@@ -200,6 +200,7 @@ async function changePassword(email_user, newpassword) {
 module.exports = {
     CreateTableUsers,
     LoadingOneAdmin,
+    User,
     readUser,
     getUser,
     checkUser,

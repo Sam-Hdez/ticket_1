@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const { sequelize } = require('./db/conexion');
 const { models } = require('./db/createModels');
+const errorHandler = require('./helpers/errorHandler');
 
 require('dotenv').config();
 const cors = require('cors');
@@ -11,10 +12,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 app.use(cors());
 
-const userRoutes = require('./routes/user.routes');
+all_routes = require('./routes/all.routes');
+app.use(all_routes);
 
-app.use('/user', userRoutes);
-
+app.use(errorHandler);
 async function server() {
     try {
         await sequelize.authenticate();
