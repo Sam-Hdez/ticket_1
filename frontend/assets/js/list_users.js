@@ -158,3 +158,5 @@ async function SubmitUser(event) {
         document.getElementById('messagesInicio').innerHTML = '<div class="text-center p-4">' + userMessage + '</div>';
     }
 }
+
+window.onload = load;
