@@ -86,7 +86,7 @@ class User {
 
 async function ListAllUsers() {
     try {
-        let listUser = await Users.findAll({ where: { active: 1 } });
+        let listUser = await Users.findAll({ where: { active: 1 }, attributes: ['user_id', 'first_name', 'last_name', 'email', 'active', 'is_admin'] });
         return listUser;
     } catch (error) {
         throw new Error('Error en la función ListAllUsers: ' + error.message);
