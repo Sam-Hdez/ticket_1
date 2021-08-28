@@ -18,11 +18,8 @@ async function loginController(req, res) {
 
 async function registerController(req, res) {
     try {
-        //let userBody = JSON.parse(req.body.json);
-        //console.log(userBody)
-        //let user = { email: userBody.email, first_name: userBody.nombre, last_name: userBody.apellido, password: userBody.password };
-        //const createResult = await UserCreate(user);
-        let user = new User({ email: req.body.email, first_name: req.body.nombre, last_name: req.body.apellidos, encrypted_password: req.body.password });
+        //console.log(req.body);
+        let user = new User({ email: req.body.email, first_name: req.body.first_name, last_name: req.body.last_name, encrypted_password: req.body.password });
         const createResult = await user.createUser();
         //console.log('Dentro de register');
         //console.log(createResult);
@@ -53,8 +50,7 @@ async function editController(req, res) {
     try {
         console.log('EditController');
         let user_id = req.params.id;
-        let data = { first_name: req.body.nombre, last_name: req.body.apellidos, is_admin: req.body.is_admin };
-
+        let data = { first_name: req.body.first_name, last_name: req.body.last_name, is_admin: req.body.is_admin };
         const result = await getUser(user_id);
         const user_to_edit = new User(result);
 
@@ -68,7 +64,7 @@ async function editController(req, res) {
 
 async function listUsers(req, res) {
     try {
-        console.log('ListUser');
+        //console.log('ListUser');
         const listUser = await ListAllUsers();
         const UserList = [];
         for (let index = 0; index < listUser.length; index++) {

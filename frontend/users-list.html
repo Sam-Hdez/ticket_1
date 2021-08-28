@@ -42,40 +42,43 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <div class="modal-body">
-                        <div id="messagesInicio"></div>
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <label for="firstName" class="form-label">Nombre(s)</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                            </div>
+                    <form id="CreateForm" onsubmit="return SubmitUser(event)" class="needs-validation" novalidate>
+                        <div class="modal-body">
+                            <div id="messagesInicio"></div>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="firstName" class="form-label">Nombre(s)</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                </div>
 
-                            <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                            </div>
+                                <div class="col-sm-6">
+                                    <label for="lastName" class="form-label">Apellidos</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                </div>
 
-                            <div class="col-12">
-                                <label for="email" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
-                            </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                                </div>
 
-                            <div class="col-sm-6">
-                                <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="password" pattern=".{8,}" required>
-                            </div>
+                                <div class="col-sm-6">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" pattern=".{8,}" required>
+                                </div>
 
-                            <div class="col-sm-6">
-                                <label for="password-confirm" class="form-label">Confirmar contraseña</label>
-                                <input type="password" class="form-control" id="password-confirm" pattern=".{8,}" required>
-                            </div>
+                                <div class="col-sm-6">
+                                    <label for="password-confirm" class="form-label">Confirmar contraseña</label>
+                                    <input type="password" class="form-control" id="password-confirm" pattern=".{8,}" required>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Crear usuario</button>
-                    </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Crear usuario</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -86,6 +89,7 @@
                         <th>Nombre(s)</th>
                         <th>Apellidos</th>
                         <th>Email</th>
+                        <th>User Level</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -135,9 +139,8 @@
                                     <label for="rol" class="form-label">Selecciona un rol:</label>
                                     <select name="rol" id="editrol" class="form-control">
                                         <option value="">Selecciona</option>
-                                        <option value="1">Usuario</option>
-                                        <option value="2">Vendedor</option>
-                                        <option value="3">Administrador</option>
+                                        <option value="false">Usuario</option>
+                                        <option value="true">Administrador</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Ingresa tu dirección de correo electrónico para continuar.
@@ -158,8 +161,12 @@
 
     <footer id="footerGeneral" class="container pt-4">
     </footer>
+
+    <script src="./assets/js/config.js"></script>
+    <script src="./assets/js/list_users.js"></script>
     <script src="./assets/bts.5/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/fontawesome.5/js/all.min.js"></script>
+    <script src="./assets/bts.5/js/form-validation.js"></script>
     <script src="./assets/js/menu.js"></script>
     <script src="./assets/js/footer.js"></script>
 </body>

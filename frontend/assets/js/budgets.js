@@ -34,3 +34,5 @@ function advanceTo(before, from, to) {
     pageInit.style.display = 'none';
     pageSig.style.display = 'block';
 }
+
+window.onload = load;
